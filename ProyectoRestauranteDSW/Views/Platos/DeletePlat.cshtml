@@ -1,0 +1,15 @@
+﻿@model PlatosModel
+
+@{
+    ViewData["Title"] = "Eliminar Plato";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>¿Estás seguro de que quieres eliminar este plato?</p>
+
+<form asp-action="DeletePlatConfirmed" method="post">
+    <input type="hidden" asp-for="IdPlat" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="ListPlat" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProyectoRestauranteDSW.DataAccess;
 using ProyectoRestauranteDSW.Models;
 using System.Collections.Generic;
@@ -38,25 +39,56 @@ namespace ProyectoRestauranteDSW.Controllers
             return View();
         }
 
-        public IActionResult AddSaveActionPlat()
+        [HttpPost]
+        public IActionResult AddSaveActionPlat(PlatosModel platoModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var platoEntity = _mapper.Map<PlatosEntity>(platoModel);
+                _restauranteContext.Plato.Add(platoEntity);
+                _restauranteContext.SaveChanges();
+                return RedirectToAction("ListPlat");
+            }
+
+            return View("AddPlat", platoModel);
         }
 
         public IActionResult EditPlat(int id)
         {
-            return View();
+            var platoEntity = _restauranteContext.Plato.Find(id);
+            var platoModel = _mapper.Map<PlatosModel>(platoEntity);
+            return View(platoModel);
         }
         [HttpPost]
-        public IActionResult EditSavedPlat()
+        public IActionResult EditSavedPlat(PlatosModel platoModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var platoEntity = _mapper.Map<PlatosEntity>(platoModel);
+                _restauranteContext.Entry(platoEntity).State = EntityState.Modified;
+                _restauranteContext.SaveChanges();
+                return RedirectToAction("ListPlat");
+            }
+
+            return View("EditPlat", platoModel);
         }
 
         [HttpGet]
-        public JsonResult DeletePlat(int id)
+        public IActionResult DeletePlat(int id)
         {
-            return Json("");
+            var platoEntity = _restauranteContext.Plato.Find(id);
+            var platoModel = _mapper.Map<PlatosModel>(platoEntity);
+            return View(platoModel);
+        }
+
+
+        [HttpPost]
+        public IActionResult DeletePlatConfirmed(int id)
+        {
+            var platoEntity = _restauranteContext.Plato.Find(id);
+            _restauranteContext.Plato.Remove(platoEntity);
+            _restauranteContext.SaveChanges();
+            return RedirectToAction("ListPlat");
         }
     }
 }
