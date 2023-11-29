@@ -10,8 +10,8 @@ using ProyectoRestauranteDSW.DataAccess;
 namespace ProyectoRestauranteDSW.Migrations
 {
     [DbContext(typeof(RestauranteContext))]
-    [Migration("20231129172658_MigracionFinal")]
-    partial class MigracionFinal
+    [Migration("20231129201825_campoPrecioPlat")]
+    partial class campoPrecioPlat
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -109,8 +109,8 @@ namespace ProyectoRestauranteDSW.Migrations
                     b.Property<string>("NombrePlato")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Precio")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Precio")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

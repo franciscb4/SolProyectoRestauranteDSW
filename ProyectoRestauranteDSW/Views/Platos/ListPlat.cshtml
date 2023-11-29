@@ -1,0 +1,63 @@
+﻿@model List<PlatosModel>
+
+@{
+
+    ViewData["Title"] = "platos listado";
+}
+
+<div class="row mt-5">
+    <div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Nombre 
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    Descripcion
+                </th>
+                <th>
+                    Imagen
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.IdPlat
+                    </td>
+                    <td>
+                        @item.NombrePlato
+                    </td>
+                    <td>
+                        @item.Precio
+                    </td>
+                    <td>
+                        @item.Descripcion
+                    </td>
+                    <td>
+                            <img src="~/imgs/@item.Imagen">
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="md-12">
+        <a class="btn btn-primary" asp-action="Add" asp-controller="">
+            Añadir Nuevo
+        </a>
+    </div>
+</div>

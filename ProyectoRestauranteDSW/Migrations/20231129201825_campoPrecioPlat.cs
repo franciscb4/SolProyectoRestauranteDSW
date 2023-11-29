@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProyectoRestauranteDSW.Migrations
 {
-    public partial class MigracionFinal : Migration
+    public partial class campoPrecioPlat : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,7 +43,7 @@ namespace ProyectoRestauranteDSW.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NombrePlato = table.Column<string>(nullable: true),
-                    Precio = table.Column<string>(nullable: true),
+                    Precio = table.Column<double>(nullable: false),
                     Descripcion = table.Column<string>(nullable: true),
                     Imagen = table.Column<string>(nullable: true)
                 },

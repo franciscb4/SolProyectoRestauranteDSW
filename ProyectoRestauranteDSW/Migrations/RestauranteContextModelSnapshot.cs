@@ -107,8 +107,8 @@ namespace ProyectoRestauranteDSW.Migrations
                     b.Property<string>("NombrePlato")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Precio")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Precio")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
