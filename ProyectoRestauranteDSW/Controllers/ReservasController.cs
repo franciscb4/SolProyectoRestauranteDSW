@@ -23,6 +23,28 @@ namespace ProyectoRestauranteDSW.Controllers
             _mapper = mapper;
         }
 
+        public IActionResult ListReser()
+        {
+
+            var reservas = _restauranteContext.Reserva.ToList();
+            var reservasModelList = new List<ReservacionModel>();
+            foreach (var reserva in reservas)
+            {
+                var reservaModel = _mapper.Map<ReservacionModel>(reserva);
+
+                // Get the NroMesa value based on the reservation's MesaId
+                reservaModel.NroMesa = _restauranteContext.Mesa
+                                            .Where(m => m.Id == reserva.Id)
+                                            .Select(m => m.NroMesa)
+                                            .FirstOrDefault();
+
+                reservasModelList.Add(reservaModel);
+            }
+
+            return View(reservasModelList);
+        }
+
+
         public IActionResult AddReser()
         {
             var mesasDisponibles = _restauranteContext.Mesa

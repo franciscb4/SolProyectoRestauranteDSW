@@ -14,6 +14,7 @@ namespace ProyectoRestauranteDSW.Models
         public string NombreCliente { get; set; }
         public List<int> IdsMesas { get; set; }
         public List<MesaEntity> MesasDisponibles { get; set; }
+        public string NroMesa { get; set; }
 
         public ReservacionModel()
         {

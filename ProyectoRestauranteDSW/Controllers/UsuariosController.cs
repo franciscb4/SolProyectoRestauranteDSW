@@ -84,7 +84,7 @@ namespace ProyectoRestauranteDSW.Controllers
             _restauranteContext.SaveChanges();
 
 
-            return Json("Se elimino de manera correcta" +""+ usuarioEntity.Nombre);
+            return Json("Se elimino de manera correcta"+" "+usuarioEntity.Nombre);
         }
     }
 }
