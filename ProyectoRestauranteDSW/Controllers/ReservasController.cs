@@ -56,6 +56,17 @@ namespace ProyectoRestauranteDSW.Controllers
             return View();
         }
 
+        public IActionResult AddReserUser()
+        {
+            var mesasDisponibles = _restauranteContext.Mesa
+                             .Select(m => new SelectListItem { Value = m.Id.ToString(), Text = m.NroMesa })
+                             .ToList();
+
+            ViewBag.MesasDisponibles = mesasDisponibles;
+
+            return View();
+        }
+
         [HttpPost]
         public IActionResult AddSaveActionReser(ReservacionModel reserModel)
         {

@@ -1,0 +1,56 @@
+﻿@using ProyectoRestauranteDSW.DataAccess;
+@model ReservacionModel
+@{
+    ViewData["Title"] = "Agregar Reserva ";
+    <style>
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #8B0000;
+        }
+    </style>
+}
+
+<h2>@ViewData["Title"]</h2>
+
+
+
+<form asp-action="AddSaveActionReser" method="post">
+    <div class="form-group">
+        <label asp-for="FechaReserva"></label>
+        <input asp-for="FechaReserva" class="form-control" />
+        <span asp-validation-for="FechaReserva" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="HoraReserva"></label>
+        <input asp-for="HoraReserva" class="form-control" />
+        <span asp-validation-for="HoraReserva" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Cantidad"></label>
+        <input asp-for="Cantidad" class="form-control" />
+        <span asp-validation-for="Cantidad" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NombreCliente"></label>
+        <input asp-for="NombreCliente" class="form-control" />
+        <span asp-validation-for="NombreCliente" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IdsMesas"></label>
+        <select asp-for="IdsMesas" asp-items="@ViewBag.MesasDisponibles" class="form-control">
+            <option value="">Seleccione una mesa</option>
+        </select>
+        <span asp-validation-for="IdsMesas" class="text-danger"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-danger">Cancelar</a>
+ 
+</form>
