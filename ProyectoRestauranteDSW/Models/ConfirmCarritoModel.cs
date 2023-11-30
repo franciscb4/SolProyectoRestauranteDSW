@@ -12,6 +12,8 @@ namespace ProyectoRestauranteDSW.Models
         public string CorreoUs { get; set; }
         public string ContraUs { get; set; }
 
+        public double Total { get; set; }
+
         public List<PlatoTemporalModel> TemporalProducts { get; set; }
         public ConfirmCarritoModel()
         {
