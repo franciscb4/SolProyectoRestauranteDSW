@@ -1,0 +1,93 @@
+﻿@model List<ReservacionModel>
+ 
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Usuarios listado";
+}
+
+<div class="row mt-5">
+    <div class="col-md-12">
+        <style>
+            h1 {
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                color: #8B0000;
+            }
+        </style>
+        <h1>LISTADO DE LOS USUARIOS</h1>
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        ID Reser
+                    </th>
+                    <th>
+                        Fecha de Reserva
+                    </th>
+                    <th>
+                        Hora de Reserva
+                    </th>
+                    
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                        Nombre del Cliente
+                    </th>
+                    <th>
+                        Nro. de Mesa
+                    </th>
+                   
+                    <th>
+                        Opciones
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.IdReser
+                        </td>
+                        <td>
+                            @item.FechaReserva
+                        </td>
+                        <td>
+                            @item.HoraReserva
+                        </td>
+                        <td>
+                            @item.Cantidad
+                        </td>
+                        <td>
+                            @item.NombreCliente
+                        </td>
+                        <td >
+                            @item.NroMesa
+                        </td>
+                                           
+                        <td>
+                            <!--<a asp-action="EditUsu" asp-route-id="@item.IdReser " class="btn btn-primary">Editar</a>
+                            <a onclick="DeleteUsuario(@item.IdReser)" class="btn btn-danger">Eliminar</a> -->
+                        </td>
+
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="md-12">
+        <a class="btn btn-primary" asp-action="AddReser">
+            Añadir Nuevo
+        </a>
+    </div>
+</div>
