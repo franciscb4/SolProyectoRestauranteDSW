@@ -58,7 +58,7 @@
                     </td>
                         <td>
                             <a asp-action="EditPlat" asp-route-id="@item.IdPlat" class="btn btn-primary">Editar</a>
-                            <a asp-action="DeletePlat" asp-route-id="@item.IdPlat" class="btn btn-danger">Eliminar</a>
+                            <a onclick="DeleteAlumno(@item.IdPlat)" class="btn btn-danger">Eliminar</a>
                         </td>
                 </tr>
             }
@@ -75,3 +75,26 @@
         </a>
     </div>
 </div>
+
+
+    @section Scripts{
+    <script type="text/javascript">
+        
+
+        const DeleteAlumno = (id) => {
+            if (!confirm("¿Esta seguro que desea eliminar el registro?")) return;
+
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("DeletePlatConfirmed","Platos")' + '/' + id,
+                success: function (data) {
+                    alert(data);
+                    window.location.href = window.location.href;
+                },
+                error: function () {
+                    alert('Algo salio mal');
+                }
+            });
+        };
+    </script>
+    }

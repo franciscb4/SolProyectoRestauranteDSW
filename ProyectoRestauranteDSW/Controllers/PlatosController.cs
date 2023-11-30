@@ -73,22 +73,18 @@ namespace ProyectoRestauranteDSW.Controllers
             return View("EditPlat", platoModel);
         }
 
+
+
         [HttpGet]
-        public IActionResult DeletePlat(int id)
+        public JsonResult DeletePlatConfirmed(int id)
         {
             var platoEntity = _restauranteContext.Plato.Find(id);
-            var platoModel = _mapper.Map<PlatosModel>(platoEntity);
-            return View(platoModel);
-        }
 
-
-        [HttpPost]
-        public IActionResult DeletePlatConfirmed(int id)
-        {
-            var platoEntity = _restauranteContext.Plato.Find(id);
             _restauranteContext.Plato.Remove(platoEntity);
             _restauranteContext.SaveChanges();
-            return RedirectToAction("ListPlat");
+
+
+            return Json("Se elimino de manera correcta");
         }
     }
 }
