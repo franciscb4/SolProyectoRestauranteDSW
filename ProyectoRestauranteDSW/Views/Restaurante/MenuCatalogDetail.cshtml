@@ -1,4 +1,5 @@
-﻿@{
+﻿@model PlatosModel;
+@{
     ViewData["Title"] = "MenuCatalogDetail";
 }
 
@@ -6,38 +7,24 @@
 
 <div class="row mt-5">
     <div class="col-md-4">
-        <img class="card-img-top" src="../../imgs/picanha.jpg" />
+        <img class="card-img-top" src="~/imgs/@Model.Imagen" />
     </div>
     <div class="col-md-8">
         <div class="row">
+            <div class="col-md-12">
+                <h5 class="text-secondary">@Model.NombrePlato</h5>
+            </div>
             <p>
-                <span class="text-danger" style="font-size:70px;">79.90</span>
+                <span class="text-danger" style="font-size:70px;">@Model.Precio</span>
             </p>
             <p>
-                <b>Descripcion : </b>
-                Lorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem Ipsus
-                Lorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem Ipsus
+                <b>Descripcion : </b> @Model.Descripcion
             </p>
-
-            <p>
-                <b>Proveedor : </b>
-                Lorem IpsusLorem IpsusLorem IpsusLorem psusLorem Ipsus
-            </p>
-
-            <p>
-                <b>Caracteristicas : </b> Lorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem Ipsus
-                Lorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem IpsusLorem Ipsus
-            </p>
-            <ul>
-                <li>Caracteristica 1</li>
-                <li>Caracteristica 2 </li>
-                <li>Caracteristica 3</li>
-                <li>Caracteristica 4</li>
-            </ul>
-
             <div class="col-md-12 mt-3">
-                <button class="btn btn-success">Añadir al carrito</button>
-                <button class="btn btn-danger">Volver</button>
+                <button class="btn btn-primary">Añadir al carrito</button>
+                <a asp-action="MenuCatalog" asp-controller="Restaurante" class="btn btn-success">
+                    Volver
+                </a>
             </div>
         </div>
     </div>
