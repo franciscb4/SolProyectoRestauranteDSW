@@ -7,86 +7,47 @@
 
 <div class="row mt-5">
     <div class="col-md-12">
-        <style>
-            h1 {
-                font-size: 24px;
-                font-weight: bold;
-                text-align: center;
-                color: #8B0000;
-            }
-        </style>
-        <h1>LISTADO DE LOS LOCALES</h1>
-        <br />
-        <table class="table">
-            <thead>
+        <h1 class="text-danger font-weight-bold text-center">LISTADO DE LOS LOCALES</h1>
+        <div class="row ml-2 my-4">
+            <div class="md-12">
+                <a class="btn btn-primary" asp-action="AddLoc">Añadir Nuevo</a>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead class="thead-dark">
                 <tr>
-                    <th>
-                        ID Local
-                    </th>
-                    <th>
-                        Nombre 
-                    </th>
-                    <th>
-                        Direccion
-                    </th>
-                    <th>
-                        Telefono
-                    </th>
-                    <th>
-                        URL
-                    </th>
-                    <th>
-                        Opciones
-                    </th>
+                    <th class="text-center align-middle">ID Local</th>
+                    <th class="text-center align-middle">Nombre</th>
+                    <th class="text-center align-middle">Direccion</th>
+                    <th class="text-center align-middle">Telefono</th>
+                    <th class="text-center align-middle">URL</th>
+                    <th class="text-center align-middle">Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @item.IdLocal
-                        </td>
-                        <td>
-                            @item.NombreLocal
-                        </td>
-                        <td>
-                            @item.Direccion
-                        </td>
-                        <td>
-                            @item.Telefono
-                        </td>
-                        <td>
-                            @item.URL
-                        </td>
-                        <td>
+                        <td class="text-center align-middle">@item.IdLocal</td>
+                        <td class="text-center align-middle">@item.NombreLocal</td>
+                        <td class="text-center align-middle">@item.Direccion</td>
+                        <td class="text-center align-middle">@item.Telefono</td>
+                        <td class="text-center align-middle"><a href="@item.URL" target="_blank">Link</a></td>
+                        <td class="text-center align-middle">
                             <a asp-action="EditLoc" asp-route-id="@item.IdLocal" class="btn btn-primary">Editar</a>
                             <a onclick="DeleteLocal(@item.IdLocal)" class="btn btn-danger">Eliminar</a>
                         </td>
                     </tr>
                 }
             </tbody>
-
         </table>
     </div>
 </div>
 
-<div class="row">
-    <div class="md-12">
-        <a class="btn btn-primary" asp-action="AddLoc">
-            Añadir Nuevo
-        </a>
-    </div>
-</div>
-
-
 @section Scripts{
     <script type="text/javascript">
-
-
         const DeleteLocal = (id) => {
             if (!confirm("¿Esta seguro que desea eliminar el registro?")) return;
-
             $.ajax({
                 type: "GET",
                 url: '@Url.Action("DeleteLocConfirmed","Locales")' + '/' + id,
@@ -100,4 +61,4 @@
             });
         };
     </script>
-    }
+}

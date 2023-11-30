@@ -3,91 +3,46 @@
 
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    ViewData["Title"] = "Usuarios listado";
+    ViewData["Title"] = "Listado de Reservas";
 }
 
 <div class="row mt-5">
     <div class="col-md-12">
-        <style>
-            h1 {
-                font-size: 24px;
-                font-weight: bold;
-                text-align: center;
-                color: #8B0000;
-            }
-        </style>
-        <h1>LISTADO DE LOS USUARIOS</h1>
-        <br />
-        <table class="table">
-            <thead>
+        <h1 class="text-danger font-weight-bold text-center">LISTADO DE RESERVAS</h1>
+        <div class="row ml-2 my-4">
+            <div class="md-12">
+                <a class="btn btn-primary" asp-action="AddReser">Añadir Nuevo</a>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead class="thead-dark">
                 <tr>
-                    <th>
-                        ID Reser
-                    </th>
-                    <th>
-                        Fecha de Reserva
-                    </th>
-                    <th>
-                        Hora de Reserva
-                    </th>
-                    
-                    <th>
-                        Cantidad
-                    </th>
-                    <th>
-                        Nombre del Cliente
-                    </th>
-                    <th>
-                        Nro. de Mesa
-                    </th>
-                   
-                    <th>
-                        Opciones
-                    </th>
-
+                    <th class="text-center align-middle">ID Reserva</th>
+                    <th class="text-center align-middle">Fecha de Reserva</th>
+                    <th class="text-center align-middle">Hora de Reserva</th>
+                    <th class="text-center align-middle">Cantidad</th>
+                    <th class="text-center align-middle">Nombre del Cliente</th>
+                    <th class="text-center align-middle">Nro. de Mesa</th>
+                    <th class="text-center align-middle">Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @item.IdReser
-                        </td>
-                        <td>
-                            @item.FechaReserva
-                        </td>
-                        <td>
-                            @item.HoraReserva
-                        </td>
-                        <td>
-                            @item.Cantidad
-                        </td>
-                        <td>
-                            @item.NombreCliente
-                        </td>
-                        <td >
-                            @item.NroMesa
-                        </td>
-                                           
+                        <td class="text-center align-middle">@item.IdReser</td>
+                        <td class="text-center align-middle">@item.FechaReserva</td>
+                        <td class="text-center align-middle">@item.HoraReserva</td>
+                        <td class="text-center align-middle">@item.Cantidad</td>
+                        <td class="text-center align-middle">@item.NombreCliente</td>
+                        <td class="text-center align-middle">@item.NroMesa</td>
                         <td>
                             <!--<a asp-action="EditUsu" asp-route-id="@item.IdReser " class="btn btn-primary">Editar</a>
                             <a onclick="DeleteUsuario(@item.IdReser)" class="btn btn-danger">Eliminar</a> -->
                         </td>
-
-
                     </tr>
                 }
             </tbody>
-
         </table>
-    </div>
-</div>
-
-<div class="row">
-    <div class="md-12">
-        <a class="btn btn-primary" asp-action="AddReser">
-            Añadir Nuevo
-        </a>
     </div>
 </div>

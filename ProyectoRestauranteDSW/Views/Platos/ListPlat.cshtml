@@ -7,86 +7,47 @@
 
 <div class="row mt-5">
     <div class="col-md-12">
-        <style>
-            h1 {
-                font-size: 24px;
-                font-weight: bold;
-                text-align: center;
-                color: #8B0000; 
-            }
-        </style>
-        <h1>LISTADO DE LOS PLATOS</h1>
-        <br />
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    ID
-                </th>
-                <th>
-                    Nombre 
-                </th>
-                <th>
-                    Precio
-                </th>
-                <th>
-                    Descripcion
-                </th>
-                <th>
-                    Imagen
-                </th>
-                <th>
-                    Opciones
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+        <h1 class="text-danger font-weight-bold text-center">LISTADO DE LOS PLATOS</h1>
+        <div class="row ml-2 my-4">
+            <div class="md-12">
+                <a class="btn btn-primary" asp-action="AddPlat" >Añadir Nuevo</a>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead class="thead-dark">
                 <tr>
-                    <td>
-                        @item.IdPlat
-                    </td>
-                    <td>
-                        @item.NombrePlato
-                    </td>
-                    <td>
-                        @item.Precio
-                    </td>
-                    <td>
-                        @item.Descripcion
-                    </td>
-                    <td>
-                            <img src="~/imgs/@item.Imagen" style="width: 100px; height: 100px;">
-                    </td>
-                        <td>
+                    <th class="text-center align-middle">ID</th>
+                    <th class="text-center align-middle">Nombre </th>
+                    <th class="text-center align-middle">Precio</th>
+                    <th class="text-center align-middle">Descripcion</th>
+                    <th class="text-center align-middle">Imagen</th>
+                    <th class="text-center align-middle">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center align-middle">@item.IdPlat</td>
+                        <td class="text-center align-middle">@item.NombrePlato</td>
+                        <td class="text-center align-middle">S/. @item.Precio</td>
+                        <td class="text-justify align-middle">@item.Descripcion</td>
+                        <td class="text-center align-middle"><img src="~/imgs/@item.Imagen" style="width: 100px; height: 100px;"></td>
+                        <td class="text-center align-middle">
                             <a asp-action="EditPlat" asp-route-id="@item.IdPlat" class="btn btn-primary">Editar</a>
                             <a onclick="DeleteAlumno(@item.IdPlat)" class="btn btn-danger">Eliminar</a>
                         </td>
-                </tr>
-            }
-        </tbody>
-
-    </table>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-    </div>
+ </div>
 
-    <div class="row">
-    <div class="md-12">
-        <a class="btn btn-primary" asp-action="AddPlat" >
-            Añadir Nuevo
-        </a>
-    </div>
-</div>
-
-
-    @section Scripts{
+@section Scripts{
     <script type="text/javascript">
-        
-
         const DeleteAlumno = (id) => {
             if (!confirm("¿Esta seguro que desea eliminar el registro?")) return;
-
             $.ajax({
                 type: "GET",
                 url: '@Url.Action("DeletePlatConfirmed","Platos")' + '/' + id,
@@ -100,4 +61,4 @@
             });
         };
     </script>
-    }
+}

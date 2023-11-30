@@ -7,118 +7,54 @@
 
 <div class="row mt-5">
     <div class="col-md-12">
-        <style>
-            h1 {
-                font-size: 24px;
-                font-weight: bold;
-                text-align: center;
-                color: #8B0000;
-            }
-        </style>
-        <h1>LISTADO DE LOS USUARIOS</h1>
-        <br />
-        <table class="table">
-            <thead>
+        <h1 class="text-danger font-weight-bold text-center">LISTADO DE LOS USUARIOS</h1>
+        <div class="row ml-2 my-4">
+            <div class="md-12">
+                <a class="btn btn-primary" asp-action="AddUsu">Añadir Nuevo</a>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead class="thead-dark">
                 <tr>
-                    <th>
-                        ID Usuario
-                    </th>
-                    <th>
-                        Nombre
-                    </th>
-                    <th>
-                        Apellido
-                    </th>
-                    <th>
-                        Nro. DNI
-                    </th>
-                    <th>
-                        Telefono
-                    </th>
-                    <th>
-                        Direccion
-                    </th>
-                    <th>
-                        Correo
-                    </th>
-                    <th>
-                        Rol
-                    </th>
-                    <th>
-                        Opciones
-                    </th>
-                   
+                    <th class="text-center align-middle">ID Usuario</th>
+                    <th class="text-center align-middle">Nombre</th>
+                    <th class="text-center align-middle">Apellido</th>
+                    <th class="text-center align-middle">Nro. DNI</th>
+                    <th class="text-center align-middle">Teléfono</th>
+                    <th class="text-center align-middle">Dirección</th>
+                    <th class="text-center align-middle">Correo</th>
+                    <th class="text-center align-middle">Rol</th>
+                    <th class="text-center align-middle">Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @item.IdUsu
-                        </td>
-                        <td>
-                            @item.Nombre
-                        </td>
-                        <td>
-                            @item.Apellido
-                        </td>
-                        <td>
-                            @item.DNI
-                        </td>
-                        <td>
-                            @item.Telefono
-                        </td>
-                        <td>
-                            @item.Direccion
-                        </td>
-                        <td>
-                            @item.Correo
-                        </td>
-
-                            @if (item.Rol)
-                            {
-                            <td>
-                                Administrador
-                            </td>
-                                    }
-                            else
-                            {
-                            <td>
-                                Cliente
-                            </td>
-                                    }
-
+                        <td class="text-center align-middle">@item.IdUsu</td>
+                        <td class="text-center align-middle">@item.Nombre</td>
+                        <td class="text-center align-middle">@item.Apellido</td>
+                        <td class="text-center align-middle">@item.DNI</td>
+                        <td class="text-center align-middle">@item.Telefono</td>
+                        <td class="text-center align-middle">@item.Direccion</td>
+                        <td class="text-center align-middle">@item.Correo</td>
+                        @if (item.Rol){<td class="text-center align-middle">Administrador</td>}
+                        else{<td class="text-center align-middle">Cliente</td>}
                         <td>
                             <a asp-action="EditUsu" asp-route-id="@item.IdUsu" class="btn btn-primary">Editar</a>
                             <a onclick="DeleteUsuario(@item.IdUsu)" class="btn btn-danger">Eliminar</a>
                         </td>
-                        
-                        
                     </tr>
                 }
             </tbody>
-
         </table>
     </div>
 </div>
 
-<div class="row">
-    <div class="md-12">
-        <a class="btn btn-primary" asp-action="AddUsu">
-            Añadir Nuevo
-        </a>
-    </div>
-</div>
-
-
 @section Scripts{
     <script type="text/javascript">
-
-
         const DeleteUsuario = (id) => {
             if (!confirm("¿Esta seguro que desea eliminar el registro?")) return;
-
             $.ajax({
                 type: "GET",
                 url: '@Url.Action("DeleteUsuConfirmed","Usuarios")' + '/' + id,
@@ -132,5 +68,4 @@
             });
         };
     </script>
-    }
-
+}
