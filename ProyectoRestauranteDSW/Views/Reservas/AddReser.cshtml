@@ -1,0 +1,48 @@
+﻿@model ReservacionModel
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Agregar Reserva ";
+    <style>
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #8B0000;
+        }
+    </style>
+}
+
+<h2>@ViewData["Title"]</h2>
+
+
+
+<form asp-action="AddSaveActionReser" method="post">
+    <div class="form-group">
+        <label asp-for="FechaReserva"></label>
+        <input asp-for="FechaReserva" class="form-control" />
+        <span asp-validation-for="FechaReserva" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="HoraReserva"></label>
+        <input asp-for="HoraReserva" class="form-control" />
+        <span asp-validation-for="HoraReserva" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Cantidad"></label>
+        <input asp-for="Cantidad" class="form-control" />
+        <span asp-validation-for="Cantidad" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Mesa"></label>
+        <input asp-for="Mesa" class="form-control" />
+        <span asp-validation-for="Mesa" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+   
+</form>
+
+<a href="Index" class="btn btn-danger">Cancelar</a>
