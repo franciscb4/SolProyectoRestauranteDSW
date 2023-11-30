@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProyectoRestauranteDSW.Migrations
 {
-    public partial class campoPrecioPlat : Migration
+    public partial class MigracionFinal : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -81,6 +81,7 @@ namespace ProyectoRestauranteDSW.Migrations
                     FechaReserva = table.Column<DateTime>(nullable: false),
                     HoraReserva = table.Column<DateTime>(nullable: false),
                     Cantidad = table.Column<int>(nullable: false),
+                    NombreCliente = table.Column<string>(nullable: true),
                     MesaId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

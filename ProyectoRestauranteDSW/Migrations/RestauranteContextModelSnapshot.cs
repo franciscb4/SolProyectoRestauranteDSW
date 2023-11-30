@@ -134,6 +134,9 @@ namespace ProyectoRestauranteDSW.Migrations
                     b.Property<int?>("MesaId")
                         .HasColumnType("int");
 
+                    b.Property<string>("NombreCliente")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("MesaId");
