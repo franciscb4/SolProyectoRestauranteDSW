@@ -1,5 +1,46 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model LocalesModel
+
 @{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Editar Local";
+    <style>
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #8B0000;
+        }
+    </style>
 }
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="EditSavedLoc" method="post">
+    <div class="form-group">
+        <label asp-for="NombreLocal"></label>
+        <input asp-for="NombreLocal" class="form-control" />
+        <span asp-validation-for="NombreLocal" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Direccion"></label>
+        <input asp-for="Direccion" class="form-control" />
+        <span asp-validation-for="Direccion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Telefono"></label>
+        <input asp-for="Telefono" class="form-control" />
+        <span asp-validation-for="Telefono" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="URL"></label>
+        <input asp-for="URL" class="form-control" />
+        <span asp-validation-for="URL" class="text-danger"></span>
+    </div>
+
+    <input type="hidden" asp-for="IdLocal" />
+
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a href="ListLoc" class="btn btn-danger">Cancelar</a>
+</form>

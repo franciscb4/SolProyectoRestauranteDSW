@@ -1,5 +1,103 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<LocalesModel>
+
 @{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "locales listado";
 }
+
+<div class="row mt-5">
+    <div class="col-md-12">
+        <style>
+            h1 {
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                color: #8B0000;
+            }
+        </style>
+        <h1>LISTADO DE LOS LOCALES</h1>
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        ID Local
+                    </th>
+                    <th>
+                        Nombre 
+                    </th>
+                    <th>
+                        Direccion
+                    </th>
+                    <th>
+                        Telefono
+                    </th>
+                    <th>
+                        URL
+                    </th>
+                    <th>
+                        Opciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.IdLocal
+                        </td>
+                        <td>
+                            @item.NombreLocal
+                        </td>
+                        <td>
+                            @item.Direccion
+                        </td>
+                        <td>
+                            @item.Telefono
+                        </td>
+                        <td>
+                            @item.URL
+                        </td>
+                        <td>
+                            <a asp-action="EditLoc" asp-route-id="@item.IdLocal" class="btn btn-primary">Editar</a>
+                            <a onclick="DeleteLocal(@item.IdLocal)" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="md-12">
+        <a class="btn btn-primary" asp-action="AddLoc">
+            Añadir Nuevo
+        </a>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+
+        const DeleteLocal = (id) => {
+            if (!confirm("¿Esta seguro que desea eliminar el registro?")) return;
+
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("DeleteLocConfirmed","Locales")' + '/' + id,
+                success: function (data) {
+                    alert(data);
+                    window.location.href = window.location.href;
+                },
+                error: function () {
+                    alert('Algo salio mal');
+                }
+            });
+        };
+    </script>
+    }
