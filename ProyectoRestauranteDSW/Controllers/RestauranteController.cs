@@ -102,5 +102,18 @@ namespace ProyectoRestauranteDSW.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult LocalCatalog() {
+            var locales = _restauranteContext.Local.ToList();
+            var localesModelList = new List<LocalesModel>();
+            foreach (var local in locales)
+
+            {
+                var localModel = Mapper.Map<LocalesModel>(local);
+                localesModelList.Add(localModel);
+            }
+            return View(localesModelList);
+        }
+
     }
 }

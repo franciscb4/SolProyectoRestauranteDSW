@@ -1,0 +1,49 @@
+﻿@model List<LocalesModel>
+@{
+    ViewData["Title"] = "Locales";
+}
+
+<h1 style="color: rgba(139, 0, 0, 0.8); text-align: center;">Visitanos en nuetros locales</h1>
+<br />
+
+<div class="container">
+    @for (int i = 0; i < Model.Count; i += 2)
+    {
+        <div class="row">
+            @if (i + 1 < Model.Count)
+            {
+                <div class="col-md-6 d-flex align-items-center mb-4">
+                    <img src="~/imgs/locales_1.jpg" alt="Imagen del local" style="width: 300px; height: 300px; flex-shrink: 0;">
+                    <div class="pl-4">
+                        <h5>@Model[i].NombreLocal</h5>
+                        <p>Dirección: @Model[i].Direccion</p>
+                        <p>Teléfono: @Model[i].Telefono</p>
+                        <a href="@Model[i].URL" class="btn btn-primary" target="_blank">Ver Sitio</a>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex align-items-center mb-4">
+                    <img src="~/imgs/locales_1.jpg" alt="Imagen del local" style="width: 300px; height: 300px; flex-shrink: 0;">
+                    <div class="pl-4">
+                        <h5>@Model[i + 1].NombreLocal</h5>
+                        <p>Dirección: @Model[i + 1].Direccion</p>
+                        <p>Teléfono: @Model[i + 1].Telefono</p>
+                        <a href="@Model[i + 1].URL" class="btn btn-primary" target="_blank">Ver Sitio</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-12 d-flex align-items-center mb-4">
+                    <img src="~/imgs/locales_1.jpg" alt="Imagen del local" style="width: 300px; height: 300px; flex-shrink: 0;">
+                    <div class="pl-4">
+                        <h5>@Model[i].NombreLocal</h5>
+                        <p>Dirección: @Model[i].Direccion</p>
+                        <p>Teléfono: @Model[i].Telefono</p>
+                        <a href="@Model[i].URL" class="btn btn-primary" target="_blank">Ver Sitio</a>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+}
