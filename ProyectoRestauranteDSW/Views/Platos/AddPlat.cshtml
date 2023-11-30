@@ -2,9 +2,19 @@
 
 @{
     ViewData["Title"] = "Agregar Nuevo Plato";
+    <style>
+        h2{
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #8B0000;
+        }
+    </style>
 }
 
 <h2>@ViewData["Title"]</h2>
+
+
 
 <form asp-action="AddSaveActionPlat" method="post">
     <div class="form-group">
@@ -32,4 +42,5 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="ListPlat" class="btn btn-danger">Cancelar</a>
 </form>
