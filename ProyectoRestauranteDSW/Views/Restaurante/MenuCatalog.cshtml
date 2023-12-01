@@ -44,7 +44,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@plato.NombrePlato</h5>
                     <p class="card-text">@plato.Descripcion</p>
-                    <a href="#" class="btn btn-primary m-1 ">Añadir a carrito</a>
+                    <a asp-controller="Restaurante" asp-action="ConfirmOrderCar" class="btn btn-primary m-1 ">Añadir a carrito</a>
                     <a asp-action="MenuCatalogDetail" asp-controller="Restaurante" asp-route-id="@plato.IdPlat" class="btn btn-success ml-1">
                         Ver detalles
                     </a>

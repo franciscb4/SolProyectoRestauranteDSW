@@ -95,7 +95,9 @@ namespace ProyectoRestauranteDSW.Controllers
             {
                 _restauranteContext.DetalleVenta.Add(new DetalleVentaEntity()
                 {
-                            //Faltaria solo la zona de grabar productos Dx
+                    Cantidad = item.Cantidad,
+                    Total = item.Total,
+                    Platos = _restauranteContext.Plato.Where(c => c.Id == item.Id).FirstOrDefault(),
                 });
             }
             return RedirectToAction("MessageSuccessOrder");

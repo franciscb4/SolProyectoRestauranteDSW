@@ -30,7 +30,14 @@ namespace ProyectoRestauranteDSW.Controllers
 
             if (usuario != null && usuario.Password == model.Password)
             {
-                return RedirectToAction("Index","Home");
+                if (usuario.Rol)
+                {
+                    return RedirectToAction("ListPlat", "Platos");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
             ModelState.AddModelError(string.Empty, "Credenciales no válidas");

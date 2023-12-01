@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var isAuthenticated = Context.User.Identity.IsAuthenticated;
+    var userName = isAuthenticated ? Context.User.Identity.Name : "";
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,17 +32,21 @@
                         <a class="nav-link" asp-controller="Restaurante" asp-action="LocalCatalog">Locales</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link" href="Reservas/AddReserUser">Reserva</a>
+                        <a class="nav-link" href="../Reservas/AddReserUser">Reserva</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item px-2">
-                        <a class="nav-link" asp-controller="Account" asp-action="Login">Iniciar Sesión</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" asp-controller="Account" asp-action="Signin">Regístrate</a>
-                    </li>
-                </ul>
+                @if (isAuthenticated){<span class="navbar-text">Hola @userName</span>}
+                else
+                {
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item px-2">
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">Iniciar Sesión</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link" asp-controller="Account" asp-action="Signin">Regístrate</a>
+                        </li>
+                    </ul>
+                }
             </div>
         </nav>
     </header>

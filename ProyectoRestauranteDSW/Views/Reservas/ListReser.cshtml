@@ -23,7 +23,7 @@
                     <th class="text-center align-middle">Cantidad</th>
                     <th class="text-center align-middle">Nombre del Cliente</th>
                     <th class="text-center align-middle">Nro. de Mesa</th>
-                    <th class="text-center align-middle">Opciones</th>
+                    @*<th class="text-center align-middle">Opciones</th>*@
                 </tr>
             </thead>
             <tbody>
@@ -36,10 +36,10 @@
                         <td class="text-center align-middle">@item.Cantidad</td>
                         <td class="text-center align-middle">@item.NombreCliente</td>
                         <td class="text-center align-middle">@item.NroMesa</td>
-                        <td>
-                            <!--<a asp-action="EditUsu" asp-route-id="@item.IdReser " class="btn btn-primary">Editar</a>
-                            <a onclick="DeleteUsuario(@item.IdReser)" class="btn btn-danger">Eliminar</a> -->
-                        </td>
+                        @*<td>
+                            <a asp-action="EditUsu" asp-route-id="@item.IdReser " class="btn btn-primary">Editar</a>
+                            <a onclick="DeleteUsuario(@item.IdReser)" class="btn btn-danger">Eliminar</a>
+                        </td>*@
                     </tr>
                 }
             </tbody>
